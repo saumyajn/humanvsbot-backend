@@ -1,0 +1,31 @@
+# Virtual Environment
+venv/
+ENV/
+env/
+.venv/
+
+# Environment Variables (Crucial for security)
+.env
+.flaskenv
+
+# Python Bytecode & Cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+
+# Distribution / Packaging
+dist/
+build/
+*.egg-info/
+
+# IDE Specific
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS Specific
+.DS_Store
+Thumbs.db
