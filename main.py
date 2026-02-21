@@ -3,8 +3,8 @@ import google.generativeai as genai
 from fastapi import FastAPI
 from pydantic import BaseModel
 from dotenv import load_dotenv
+from fastapi.middleware.cors import CORSMiddleware
 
-# 1. Load the API key from the .env file
 load_dotenv()
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
@@ -52,6 +52,17 @@ initial_history = [
 chat_sessions = {}
 
 app = FastAPI()
+origins = [
+    "http://localhost:4200",  # Keep for local testing
+    "https://humanvsbot-middleware.onrender.com",  # Your Node URL
+]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 class MessagePayload(BaseModel):
