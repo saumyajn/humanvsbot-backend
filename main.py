@@ -146,6 +146,6 @@ async def get_bot_response(payload: MessagePayload):
         return {"reply": "my connection is glitching, give me a sec", "is_bot": True}
 
 
-@app.route("/health", methods=["GET", "HEAD"])
+@app.api_route("/health", methods=["GET", "HEAD"])
 async def health_check():
     return {"status": "AI Brain is online"}
