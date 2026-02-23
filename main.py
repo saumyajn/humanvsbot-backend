@@ -1,4 +1,5 @@
 import os
+from urllib.request import Request
 import google.generativeai as genai
 from fastapi import FastAPI
 from pydantic import BaseModel
@@ -147,5 +148,5 @@ async def get_bot_response(payload: MessagePayload):
 
 
 @app.api_route("/health", methods=["GET", "HEAD"])
-async def health_check():
+async def health_check(request: Request):
     return {"status": "AI Brain is online"}
