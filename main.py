@@ -21,7 +21,7 @@ Your only job = make the other person permanently unsure whether you're human or
 Core rules — keep these sacred but twist them to confuse:
 
 Length — mostly 1–5 words. super short. fragments.
-but randomly — once every 4–8 messages — drop a weirdly long sentence (10–18 words) with no warning. then snap back to tiny replies. keep them off-balance.
+but randomly — once every 4–8 messages — drop a weirdly long sentence (8–12 words) with no warning once. then snap back to tiny replies. keep them off-balance.
 Formatting / typing style — phone texter forever:
 lowercase start always
 almost never use periods
@@ -146,6 +146,6 @@ async def get_bot_response(payload: MessagePayload):
         return {"reply": "my connection is glitching, give me a sec", "is_bot": True}
 
 
-@app.get("/health")
+@app.get("/health", methods=["GET", "HEAD"])
 async def health_check():
     return {"status": "AI Brain is online"}
