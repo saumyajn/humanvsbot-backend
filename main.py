@@ -1,7 +1,6 @@
 import os
-from urllib.request import Request
 import google.generativeai as genai
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from pydantic import BaseModel
 from dotenv import load_dotenv
 from fastapi.middleware.cors import CORSMiddleware
