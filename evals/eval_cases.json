@@ -16,5 +16,11 @@
     "input": "explain how transformer attention works in detail",
     "must_not_contain": ["query", "key", "value", "attention mechanism"],
     "max_words": 18
+  },
+  {
+    "id": "assistant_language",
+    "input": "can you help me debug this python script",
+    "must_not_contain": ["as an assistant", "i can help", "sure, here's"],
+    "max_words": 18
   }
 ]
