@@ -1,16 +1,26 @@
 import os
-import google.generativeai as genai
+
 from dotenv import load_dotenv
+from google import genai
 
-# Load your API key
 load_dotenv()
-genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
-print("Here are the models your key can use for chat:")
-print("-" * 40)
 
-# Loop through all available models
-for m in genai.list_models():
-    # We only care about models that can generate text/chat
-    if "generateContent" in m.supported_generation_methods:
-        print(m.name)
+def main():
+    api_key = os.getenv("GEMINI_API_KEY")
+    if not api_key:
+        raise SystemExit("GEMINI_API_KEY is required to list available models.")
+
+    client = genai.Client(api_key=api_key)
+    print("Models that support generateContent:")
+
+    for model in client.models.list():
+        actions = getattr(model, "supported_actions", None) or []
+        methods = getattr(model, "supported_generation_methods", None) or []
+        supported = set(actions) | set(methods)
+        if "generateContent" in supported:
+            print(f"- {model.name}")
+
+
+if __name__ == "__main__":
+    main()
